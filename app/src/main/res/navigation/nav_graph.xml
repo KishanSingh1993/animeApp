@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/animeListFragment">
+
+    <fragment
+        android:id="@+id/animeListFragment"
+        android:name="com.kishan.animeapp.ui.anime_list.AnimeListFragment"
+        android:label="Anime List"
+        tools:layout="@layout/fragment_anime_list">
+        <action
+            android:id="@+id/action_animeListFragment_to_animeDetailFragment"
+            app:destination="@id/animeDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/animeDetailFragment"
+        android:name="com.kishan.animeapp.ui.anime_detail.AnimeDetailFragment"
+        android:label="Anime Details"
+        tools:layout="@layout/fragment_anime_detail">
+        <argument
+            android:name="animeId"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
