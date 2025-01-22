@@ -6,5 +6,9 @@ data class Anime(
     val title: String,
     val episodes: Int?,
     val score: Double?,
-    val images: AnimeImage
+    val synopsis: String,
+    val images: Images,
+    val trailer: Trailer?,
+    val genres: List<Genre>,
+    val characters: List<Character>
 )
