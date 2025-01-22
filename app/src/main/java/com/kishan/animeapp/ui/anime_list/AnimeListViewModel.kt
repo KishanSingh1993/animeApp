@@ -9,11 +9,6 @@ import com.kishan.animeapp.util.Resource
 
 class AnimeListViewModel(private val repository: AnimeRepository) : ViewModel() {
     fun getAnimeList() = liveData(Dispatchers.IO) {
-        emit(Resource.loading(null))
-        try {
-            emit(Resource.success(repository.fetchTopAnime().data))
-        } catch (e: Exception) {
-            emit(Resource.error("Error fetching anime list", null))
-        }
+        emit(repository.fetchTopAnime().data)
     }
 }

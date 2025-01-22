@@ -1,20 +1,22 @@
 package com.kishan.animeapp.ui.anime_list
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kishan.animeapp.R
 import com.kishan.animeapp.data.model.Anime
+import com.kishan.animeapp.databinding.ItemAnimeBinding
 
-
-class AnimeListAdapter(private val animeList: List<Anime>, private val onItemClick: (Anime) -> Unit) :
-    RecyclerView.Adapter<AnimeListAdapter.AnimeViewHolder>() {
+class AnimeListAdapter(
+    private var animeList: List<Anime>,
+    private val onItemClick: (Anime) -> Unit
+) : RecyclerView.Adapter<AnimeListAdapter.AnimeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_anime, parent, false)
-        return AnimeViewHolder(view)
+        val binding = ItemAnimeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return AnimeViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
@@ -23,18 +25,24 @@ class AnimeListAdapter(private val animeList: List<Anime>, private val onItemCli
 
     override fun getItemCount(): Int = animeList.size
 
-    inner class AnimeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(anime: Anime) {
-//            itemView.animeTitle.text = anime.title
-//            itemView.animeEpisodes.text = "Episodes: ${anime.episodes ?: "N/A"}"
-//            itemView.animeRating.text = "Rating: ${anime.score ?: "N/A"}"
-//
-//            Glide.with(itemView.context)
-//                .load(anime.images.jpg.image_url)
-//                .placeholder(R.drawable.placeholder_image)
-//                .into(itemView.animePoster)
+    fun updateList(newList: List<Anime>) {
+        animeList = newList
+        notifyDataSetChanged()
+    }
 
-            itemView.setOnClickListener { onItemClick(anime) }
+    inner class AnimeViewHolder(private val binding: ItemAnimeBinding) : RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
+        fun bind(anime: Anime) {
+            binding.animeTitle.text = anime.title
+            binding.animeEpisodes.text = "Episodes: ${anime.episodes ?: "N/A"}"
+            binding.animeRating.text = "Rating: ${anime.score ?: "N/A"}"
+
+            Glide.with(binding.root.context)
+                .load(anime.images.jpg.image_url)
+                .placeholder(R.drawable.place_holder)
+                .into(binding.animePoster)
+
+            binding.root.setOnClickListener { onItemClick(anime) }
         }
     }
 }

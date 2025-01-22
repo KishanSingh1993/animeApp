@@ -3,34 +3,93 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Video Player / Poster Image -->
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/animePoster"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Anime Title -->
     <TextView
         android:id="@+id/animeTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
         app:layout_constraintTop_toBottomOf="@id/animePoster"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp" />
+        android:paddingTop="8dp"
+        android:text="Anime Title" />
 
+    <!-- Anime Synopsis -->
     <TextView
         android:id="@+id/animeSynopsis"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:padding="8dp"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintTop_toBottomOf="@id/animeTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="8dp"
+        android:text="Synopsis goes here..." />
+
+    <!-- Anime Genre -->
+    <TextView
+        android:id="@+id/animeGenre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/animeSynopsis"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="8dp"
+        android:text="Genre: Action, Adventure" />
+
+    <!-- Anime Episodes -->
+    <TextView
+        android:id="@+id/animeEpisodes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/animeGenre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="8dp"
+        android:text="Episodes: 24" />
+
+    <!-- Anime Rating -->
+    <TextView
+        android:id="@+id/animeRating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/animeEpisodes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="8dp"
+        android:text="Rating: 8.5/10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
