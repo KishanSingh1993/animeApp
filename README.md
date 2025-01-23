@@ -107,3 +107,7 @@ Folder Structure
 │   │   │   │   │   └── activity_anime_detail.xml
 │   │   │   │   └── drawable
 │   │   │   │       └── exo_player_icon.xml
+
+# Screenshot
+
+<img src="/ss/1.png" height="400px"/> || <img src="/ss/2.png" height="400px"/>

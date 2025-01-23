@@ -50,8 +50,10 @@ class AnimeDetailActivity : AppCompatActivity() {
     }
 
     private fun playTrailer(url: String) {
+
         exoPlayer = ExoPlayer.Builder(this).build()
         binding.playerView.player = exoPlayer
+
         val mediaItem = MediaItem.fromUri(Uri.parse(url))
         exoPlayer.setMediaItem(mediaItem)
         exoPlayer.prepare()
